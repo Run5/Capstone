@@ -1,38 +1,27 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 
 const NavBar = () => {
-  // const [collapse, setCollapse] = useState('true')
 
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
+    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+      <div class="container-fluid">
+        <NavLink to='/' exact={true} activeClassName='active'>
+          Home
+        </NavLink>
+        <NavLink to='/login' exact={true} activeClassName='active'>
+          Login
+        </NavLink>
+        <NavLink to='/sign-up' exact={true} activeClassName='active'>
+          Sign Up
+        </NavLink>
+        <NavLink to='/users' exact={true} activeClassName='active'>
+          Users
+        </NavLink>
+        <LogoutButton />
+      </div>
     </nav>
   );
 }
