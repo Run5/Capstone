@@ -1,9 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 
 const NavBar = () => {
+  // const [collapse, setCollapse] = useState('true')
+
   return (
     <nav>
       <ul>
