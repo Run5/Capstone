@@ -7,6 +7,8 @@ import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import Splash from './components/Home/Splash';
+import Home from './components/Home/Home';
 import { authenticate } from './store/session';
 
 function App() {
@@ -43,7 +45,7 @@ function App() {
         </ProtectedRoute>
         {user ? (
           <ProtectedRoute path='/' exact={true} >
-            <h1>My Home Page</h1>
+            <Home />
           </ProtectedRoute>
         ) : (
           <Route exact path="/">
