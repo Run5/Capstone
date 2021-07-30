@@ -1,4 +1,3 @@
-from sqlalchemy.ext.declarative import api
 from .db import db
 
 
