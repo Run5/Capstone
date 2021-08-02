@@ -8,9 +8,14 @@
 }
 
 .navbar-hover {
+  animation: fadeIn 0.5s;
   background-color: white;
   color: black;
   border-bottom: 1px solid grey;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
 
 .navlink-comp {
@@ -28,6 +33,7 @@
 }
 
 .dropdown-nav {
+  animation: fadeIn 0.5s;
   background-color: white;
   color: black;
 }
