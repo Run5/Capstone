@@ -13,8 +13,8 @@ class GrindSessions(db.Model):
     ap = db.Column(db.Integer, nullable=False, default=0)
     dp = db.Column(db.Integer, nullable=False, default=0)
     time = db.Column(db.Time, nullable=False)
-    hourly_silver = db.Column(db.Integer, nullable=False, default=0)
-    hourly_trash = db.Column(db.Integer, nullable=False, default=0)
+    silver = db.Column(db.Integer, nullable=False, default=0)
+    trash = db.Column(db.Integer, nullable=False, default=0)
 
     owner = db.relationship("User", back_populates="grind_sessions")
 
@@ -27,6 +27,6 @@ class GrindSessions(db.Model):
             'ap': self.ap,
             'dp': self.dp,
             'time': self.time,
-            'hourly_silver': self.hourly_silver,
-            'hourly_trash': self.hourly_trash,
+            'silver': self.silver,
+            'trash': self.trash,
         }
