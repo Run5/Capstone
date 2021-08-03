@@ -31,7 +31,7 @@ const NavBar = () => {
     <>
       <nav id='first-nav' className='navbar' onMouseEnter={() => extendNavbar()}>
         <div className='nav-container'>
-          <NavLink to='/' exact={true} activeClassName='active' className='navlink-comp nav-container-element'>
+          <NavLink to='/' exact={true} activeClassName='active' className='navlink-comp nav-container-element main-home'>
             Modest
           </NavLink>
           <NavLink to='/grind-sessions' exact={true} activeClassName='active' className='navlink-comp nav-container-element nav-container-element-top'>
