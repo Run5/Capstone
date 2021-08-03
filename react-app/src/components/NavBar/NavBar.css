@@ -1,5 +1,6 @@
 .navbar {
   background-color: none;
+  height: 80px;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -58,6 +59,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* .nav-list > li {
+  width: min-content;
+  height: min-content;
+  justify-self: center;
+  cursor: pointer;
+} */
+.nav-container-element-top {
+  margin: auto;
+
 }
 
 .nav-container-element-top:hover {

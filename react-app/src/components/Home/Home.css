@@ -2,8 +2,8 @@ video {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
   transform: translate3d(-50%, -50%, 0);
   z-index: -1;
 }
