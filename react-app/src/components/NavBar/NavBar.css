@@ -85,7 +85,11 @@
   font-size: 25px;
 }
 
-.nav-list  > li {
+.nav-list > li {
   width: 100%;
   cursor: pointer;
+}
+
+.nav-list > li:hover{
+  color: lightgray;
 }
