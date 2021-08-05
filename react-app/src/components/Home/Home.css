@@ -30,7 +30,9 @@ video {
 }
 
 .home-page-title {
-
+  font-size: 70px;
+  font-weight: bold;
+  font-family: 'Ink Free';
 }
 
 .button-container {
