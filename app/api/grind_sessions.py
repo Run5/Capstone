@@ -47,14 +47,15 @@ def grind_sessions_func():
 
 @grind_sessions_routes.route('/<id>', methods=['DELETE', 'PATCH'])
 @login_required
-def grind_sessions_edit():
+def grind_sessions_edit(id):
     if request.method == 'DELETE':
-        grind_sessions = GrindSessions.query.all()
-        if grind_sessions:
-            return {'all_grind_sessions':[session.to_dict() for session in grind_sessions]}
-        else:
-            return {}
-    if request.method == 'POST':
+        deleted_grind = GrindSessions.query.filter(
+            GrindSessions.user_id == current_user.id,
+            GrindSessions.id == id).one_or_none()
+        db.session.delete(deleted_grind)
+        db.session.commit()
+        return deleted_grind.to_dict()
+    if request.method == 'PATCH':
         form = GrindForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():

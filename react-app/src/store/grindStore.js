@@ -55,9 +55,32 @@ export const deleteGrind = (id) => async (dispatch) => {
   }
 };
 
-export const editGrind = (id) => async (dispatch) => {
+export const editGrind = (payload) => async (dispatch) => {
+  const {
+    id,
+    location,
+    charClass,
+    ap,
+    dp,
+    time,
+    silver,
+    trash
+  } = payload;
+  const char_class = charClass;
   const response = await fetch(`/api/grinds/${id}`, {
     method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      location,
+      char_class,
+      ap,
+      dp,
+      time,
+      silver,
+      trash
+    }),
   });
 
   if (response.ok) {
@@ -112,6 +135,10 @@ export default function grindReducer(state = initialState, action) {
     case LOAD_SINGLE_GRIND:
       newState = Object.assign({}, state);
       newState[action.grind.id] = action.grind;
+      return newState;
+    case DELETE_GRIND:
+      newState = {...state}
+      delete newState[action.grind.id]
       return newState;
     default:
       return state;
