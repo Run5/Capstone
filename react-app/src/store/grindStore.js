@@ -1,5 +1,6 @@
 const LOAD_ALL_GRINDS = 'stocks/LOAD_ALL_GRINDS';
 const LOAD_SINGLE_GRIND = 'stocks/LOAD_SINGLE_GRIND';
+const DELETE_GRIND = 'stocks/DELETE_GRIND';
 
 const loadAllGrinds = grinds => ({
   type: LOAD_ALL_GRINDS,
@@ -8,6 +9,11 @@ const loadAllGrinds = grinds => ({
 
 const loadOneGrind = grind => ({
   type: LOAD_SINGLE_GRIND,
+  grind,
+});
+
+const deleteOne = (grind) => ({
+  type: DELETE_GRIND,
   grind,
 });
 
@@ -44,8 +50,19 @@ export const deleteGrind = (id) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const ticker = await response.json();
-    dispatch(deleteTicker(ticker));
+    const grind = await response.json();
+    dispatch(deleteOne(grind));
+  }
+};
+
+export const editGrind = (id) => async (dispatch) => {
+  const response = await fetch(`/api/grinds/${id}`, {
+    method: 'PATCH',
+  });
+
+  if (response.ok) {
+    const grind = await response.json();
+    dispatch(loadOneGrind(grind));
   }
 };
 
