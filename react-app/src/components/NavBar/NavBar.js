@@ -92,8 +92,8 @@ const NavBar = () => {
           </span>
           <ul className='nav-container-element nav-list'>
             <li>Email</li>
-            <li>Github</li>
-            <li>Linkedin</li>
+            <li onClick={()=> window.open("https://github.com/Run5", "_blank")}>Github</li>
+            <li onClick={()=> window.open("https://www.linkedin.com/in/chase-brashear-a05724163/", "_blank")}>Linkedin</li>
           </ul>
           <span className='nav-container-element'>
           </span>
