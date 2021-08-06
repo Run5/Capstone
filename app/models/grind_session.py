@@ -26,7 +26,7 @@ class GrindSessions(db.Model):
             'char_class': self.char_class,
             'ap': self.ap,
             'dp': self.dp,
-            'time': self.time,
+            'time': str(self.time),
             'silver': self.silver,
             'trash': self.trash,
         }

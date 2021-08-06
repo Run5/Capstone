@@ -12,6 +12,7 @@ import CreateCharacter from './components/Character/CreateCharacter';
 import Splash from './components/Home/Splash';
 import Home from './components/Home/Home';
 import { authenticate } from './store/session';
+import DisplayGrind from './components/GrindSession/DisplayGrind';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute> */}
+        <Route path='/grind-sessions' exact={true}>
+          <DisplayGrind />
+        </Route>
         <ProtectedRoute path='/profile' exact={true} >
           <MyProfile />
         </ProtectedRoute>

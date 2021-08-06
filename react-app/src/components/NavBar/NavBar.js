@@ -89,7 +89,6 @@ const NavBar = () => {
             <li>Abandoned Monastery</li> */}
           </ul>
           <span className='nav-container-element'>
-            Hello
           </span>
           <ul className='nav-container-element nav-list'>
             <li>Email</li>
