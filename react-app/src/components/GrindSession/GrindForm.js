@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { postGrindSession } from '../../store/grindStore';
+import { editGrind, postGrindSession } from '../../store/grindStore';
 
-export default function GrindForm({ setShowModal }) {
+export default function GrindForm({ setShowModal, grindId }) {
   const [errors, setErrors] = useState([]);
   const [location, setLocation] = useState('');
   const [charClass, setCharClass] = useState('');
@@ -12,8 +12,9 @@ export default function GrindForm({ setShowModal }) {
   const [endTime, setEndTime] = useState('');
   const [silver, setSilver] = useState('');
   const [trash, setTrash] = useState('');
-  const user = useSelector(state => state.session.user);
+  const grindSessions = useSelector(state => state.grind);
   const dispatch = useDispatch();
+  let grind = null;
 
   const diff = (start, end) => {
     start = start.split(":");
@@ -44,6 +45,34 @@ export default function GrindForm({ setShowModal }) {
       setErrors(data)
     }
     setShowModal(false);
+  };
+
+  const onEdit = async (e) => {
+    e.preventDefault();
+    const payload = {
+      id: grindId,
+      location: location,
+      charClass: charClass,
+      ap: AP,
+      dp: DP,
+      time: diff(startTime, endTime),
+      silver: silver,
+      trash: trash
+    }
+    const data = await dispatch(editGrind(payload));
+    if (data) {
+      setErrors(data)
+    }
+    setShowModal(false);
+  };
+
+  const updateAll = () => {
+    setLocation(grind.location)
+    setCharClass(grind.char_class)
+    setAP(grind.ap)
+    setDP(grind.dp)
+    setSilver(grind.silver)
+    setTrash(grind.trash)
   };
 
   const updateLocation = (e) => {
@@ -78,9 +107,16 @@ export default function GrindForm({ setShowModal }) {
     setTrash(e.target.value);
   };
 
+  useEffect(() => {
+    if (grindId) {
+      grind = grindSessions[`${grindId}`];
+      updateAll();
+    }
+  }, [grindId])
+
   return (
     <>
-      <form onSubmit={onAdd}>
+      <form onSubmit={(grindId) ? onEdit : onAdd}>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
