@@ -59,17 +59,19 @@ def grind_sessions_edit(id):
         form = GrindForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            session = GrindSessions(
-                user_id = current_user.id,
-                location = form.data['location'],
-                char_class = form.data['char_class'],
-                ap = form.data['ap'],
-                dp = form.data['dp'],
-                time = form.data['time'],
-                silver = form.data['silver'],
-                trash = form.data['trash'],
-            )
-            db.session.add(session)
+            session_exists = GrindSessions.query.filter(
+                GrindSessions.user_id == current_user.id,
+                GrindSessions.id == id).one_or_none()
+
+            session_exists.location = form.data['location'],
+            session_exists.char_class = form.data['char_class'],
+            session_exists.ap = form.data['ap'],
+            session_exists.dp = form.data['dp'],
+            session_exists.time = form.data['time'],
+            session_exists.silver = form.data['silver'],
+            session_exists.trash = form.data['trash'],
+
+            db.session.add(session_exists)
             db.session.commit()
-            return session.to_dict()
+            return session_exists.to_dict()
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401

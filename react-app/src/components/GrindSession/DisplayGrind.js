@@ -31,7 +31,6 @@ export default function DisplayGrind() {
         </thead>
         <tbody>
           {Object.values(grindSessions).map(grind => {
-            {console.log('GRIND: ', grind)}
             return (
             <tr>
               <td>{grind.location}</td>
@@ -43,7 +42,7 @@ export default function DisplayGrind() {
               {(user) ? (
                 (user.id === grind.user_id) ? (
                   <div>
-                    <button onClick={() => dispatch(editGrind(grind.id))}>Edit</button>
+                    <GrindModal grindId={ grind.id } />
                     <button onClick={() => dispatch(deleteGrind(grind.id))}>Delete</button>
                   </div>
                 ) : null ) : null }
@@ -52,7 +51,7 @@ export default function DisplayGrind() {
           })}
         </tbody>
       </table>
-      <GrindModal />
+      <GrindModal grindId={ null } />
     </>
     // <>
     //   {console.log('>>>>>>>>>>>>>>>>>>', grindSessions)}
