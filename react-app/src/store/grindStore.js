@@ -38,6 +38,17 @@ export const getMyGrinds = () => async dispatch => {
   };
 };
 
+export const deleteGrind = (id) => async (dispatch) => {
+  const response = await fetch(`/api/grinds/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    const ticker = await response.json();
+    dispatch(deleteTicker(ticker));
+  }
+};
+
 export const postGrindSession = (payload) => async dispatch => {
   const {
     location,

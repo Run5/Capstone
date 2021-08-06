@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllGrinds } from '../../store/grindStore';
+import { getAllGrinds, editGrind, deleteGrind } from '../../store/grindStore';
 import GrindModal from './GrindModal';
 
 
 export default function DisplayGrind() {
   // const [extended, setExtended] = useState(true);
-  // const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user)
   const grindSessions = useSelector(state => state.grind)
   const dispatch = useDispatch();
 
@@ -34,12 +34,19 @@ export default function DisplayGrind() {
             {console.log('GRIND: ', grind)}
             return (
             <tr>
-              <td>{grind['location']}</td>
-              <td>{grind['char_class']}</td>
-              <td>{grind['ap']} / {grind['dp']}</td>
-              <td>{grind['time']}</td>
-              <td>{grind['silver']}</td>
-              <td>{grind['trash']}</td>
+              <td>{grind.location}</td>
+              <td>{grind.char_class}</td>
+              <td>{grind.ap} / {grind.dp}</td>
+              <td>{grind.time}</td>
+              <td>{grind.silver}</td>
+              <td>{grind.trash}</td>
+              {(user) ? (
+                (user.id === grind.user_id) ? (
+                  <div>
+                    <button onClick={() => dispatch(editGrind(grind.id))}>Edit</button>
+                    <button onClick={() => dispatch(deleteGrind(grind.id))}>Delete</button>
+                  </div>
+                ) : null ) : null }
             </tr>
             )
           })}
