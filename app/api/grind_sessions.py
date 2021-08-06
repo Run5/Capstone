@@ -46,8 +46,9 @@ def grind_sessions_func():
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @grind_sessions_routes.route('/<id>', methods=['DELETE', 'PATCH'])
-def grind_sessions_delete():
-    if request.method == 'GET':
+@login_required
+def grind_sessions_edit():
+    if request.method == 'DELETE':
         grind_sessions = GrindSessions.query.all()
         if grind_sessions:
             return {'all_grind_sessions':[session.to_dict() for session in grind_sessions]}
