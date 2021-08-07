@@ -14,7 +14,7 @@ export default function Home() {
       <div className='homepage-container'>
         <h1 className='home-page-title'>Modest Grind Sessions</h1>
         <div className='button-container'>
-          <NavLink to='/create-character' exact={true} activeClassName='active' className='large-button'><span>Create Character </span></NavLink>
+          <NavLink to='/characters' exact={true} activeClassName='active' className='large-button'><span>Create Character </span></NavLink>
           <NavLink to='/grind-sessions' exact={true} activeClassName='active' className='large-button'><span>Register Grind Session </span></NavLink>
         </div>
       </div>

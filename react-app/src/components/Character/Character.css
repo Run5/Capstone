@@ -1,0 +1,33 @@
+.page-container {
+  background-color: #0e0e0e;
+}
+
+.page-container > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100vw;
+  min-height: 100vh;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: -1;
+}
+
+.character-container {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50%;
+  height: 300px;
+  text-align: center;
+}
+
+.character-page-title {
+  font-size: 70px;
+  font-weight: bold;
+  font-family: 'Ink Free';
+  color: white;
+}

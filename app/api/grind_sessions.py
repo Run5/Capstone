@@ -2,7 +2,7 @@ from app.forms.grind_form import GrindForm
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import GrindSessions, db
-from json import dumps
+
 
 grind_sessions_routes = Blueprint('grind_sessions', __name__)
 
@@ -63,13 +63,13 @@ def grind_sessions_edit(id):
                 GrindSessions.user_id == current_user.id,
                 GrindSessions.id == id).one_or_none()
 
-            session_exists.location = form.data['location'],
-            session_exists.char_class = form.data['char_class'],
-            session_exists.ap = form.data['ap'],
-            session_exists.dp = form.data['dp'],
-            session_exists.time = form.data['time'],
-            session_exists.silver = form.data['silver'],
-            session_exists.trash = form.data['trash'],
+            session_exists.location = form.data['location']
+            session_exists.char_class = form.data['char_class']
+            session_exists.ap = form.data['ap']
+            session_exists.dp = form.data['dp']
+            session_exists.time = form.data['time']
+            session_exists.silver = form.data['silver']
+            session_exists.trash = form.data['trash']
 
             db.session.add(session_exists)
             db.session.commit()
