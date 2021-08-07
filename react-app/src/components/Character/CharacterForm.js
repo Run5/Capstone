@@ -5,7 +5,7 @@ import { editCharacter, postCharacter } from '../../store/characterStore';
 export default function GrindForm({ setShowModal, charId }) {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
-  const [charClass, setCharClass] = useState('');
+  const [charClass, setCharClass] = useState('Warrior');
   const [AP, setAP] = useState('');
   const [DP, setDP] = useState('');
   const characters = useSelector(state => state.character);
@@ -96,12 +96,36 @@ export default function GrindForm({ setShowModal, charId }) {
         )}
         <div>
           <label>Class</label>
-          <input
-            type='text'
+          <select
+            type='select'
             name='class'
             onChange={updateCharClass}
             value={charClass}
-          ></input>
+          >
+            <option value="Warrior">Warrior</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Sorceress">Sorceress</option>
+            <option value="Berserker">Berserker</option>
+            <option value="Tamer">Tamer</option>
+            <option value="Musa">Musa</option>
+            <option value="Maehwa">Maehwa</option>
+            <option value="Valkyrie">Valkyrie</option>
+            <option value="Kunoichi">Kunoichi</option>
+            <option value="Ninja">Ninja</option>
+            <option value="Wizard">Wizard</option>
+            <option value="Witch">Witch</option>
+            <option value="Dark Knight">Dark Knight</option>
+            <option value="Striker">Striker</option>
+            <option value="Mystic">Mystic</option>
+            <option value="Archer">Archer</option>
+            <option value="Lahn">Lahn</option>
+            <option value="Shai">Shai</option>
+            <option value="Guardian">Guardian</option>
+            <option value="Hashashin">Hashashin</option>
+            <option value="Nova">Nova</option>
+            <option value="Sage">Sage</option>
+            <option value="Corsair">Corsair</option>
+          </select>
         </div>
         <div>
           <label>AP</label>

@@ -4,8 +4,8 @@ import { editGrind, postGrindSession } from '../../store/grindStore';
 
 export default function GrindForm({ setShowModal, grindId }) {
   const [errors, setErrors] = useState([]);
-  const [location, setLocation] = useState('');
-  const [charClass, setCharClass] = useState('');
+  const [location, setLocation] = useState('Orc Camp');
+  const [charClass, setCharClass] = useState('Warrior');
   const [AP, setAP] = useState('');
   const [DP, setDP] = useState('');
   const [startTime, setStartTime] = useState('');
@@ -124,22 +124,65 @@ export default function GrindForm({ setShowModal, grindId }) {
         </div>
         <div>
           <label>Location</label>
-          <input
-            type='text'
+          <select
+            type='select'
             name='location'
             onChange={updateLocation}
             value={location}
-            required={true}
-          ></input>
+          >
+            <option value="Orc Camp">Orc Camp</option>
+            <option value="Castle Ruins">Castle Ruins</option>
+            <option value="Bloody Monastery">Bloody Monastery</option>
+            <option value="Star's End">Star's End</option>
+            <option value="Hystria Ruins">Hystria Ruins</option>
+            <option value="Swamp Fogan Habitat">Swamp Fogan Habitat</option>
+            <option value="Swamp Naga Habitat">Swamp Naga Habitat</option>
+            <option value="Crypt of Resting Thoughts">Crypt of Resting Thoughts</option>
+            <option value="Biraghi Den">Biraghi Den</option>
+            <option value="Ash Forest">Ash Forest</option>
+            <option value="Sycraia Abyssal Ruins">Sycraia Abyssal Ruins</option>
+            <option value="Aakman Temple">Aakman Temple</option>
+            <option value="Thornwood Forest">Thornwood Forest</option>
+            <option value="Kratuga Ancient Ruins">Kratuga Ancient Ruins</option>
+            <option value="Altar Imp Habitat">Altar Imp Habitat</option>
+            <option value="Tunkuta">Tunkuta</option>
+            <option value="Olun's Valley">Olun's Valley</option>
+            <option value="Padix Island">Padix Island</option>
+            <option value="Abandoned Monastery">Abandoned Monastery</option>
+          </select>
         </div>
         <div>
           <label>Class</label>
-          <input
-            type='text'
+          <select
+            type='select'
             name='class'
             onChange={updateCharClass}
             value={charClass}
-          ></input>
+          >
+            <option value="Warrior">Warrior</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Sorceress">Sorceress</option>
+            <option value="Berserker">Berserker</option>
+            <option value="Tamer">Tamer</option>
+            <option value="Musa">Musa</option>
+            <option value="Maehwa">Maehwa</option>
+            <option value="Valkyrie">Valkyrie</option>
+            <option value="Kunoichi">Kunoichi</option>
+            <option value="Ninja">Ninja</option>
+            <option value="Wizard">Wizard</option>
+            <option value="Witch">Witch</option>
+            <option value="Dark Knight">Dark Knight</option>
+            <option value="Striker">Striker</option>
+            <option value="Mystic">Mystic</option>
+            <option value="Archer">Archer</option>
+            <option value="Lahn">Lahn</option>
+            <option value="Shai">Shai</option>
+            <option value="Guardian">Guardian</option>
+            <option value="Hashashin">Hashashin</option>
+            <option value="Nova">Nova</option>
+            <option value="Sage">Sage</option>
+            <option value="Corsair">Corsair</option>
+          </select>
         </div>
         <div>
           <label>AP</label>

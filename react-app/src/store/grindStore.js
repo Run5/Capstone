@@ -26,17 +26,8 @@ export const getSingleGrind = (grindId) => async dispatch => {
   };
 };
 
-export const getAllGrinds = () => async dispatch => {
-  const response = await fetch(`/api/grinds`);
-
-  if (response.ok) {
-    const grinds = await response.json();
-    dispatch(loadAllGrinds(grinds));
-  };
-};
-
-export const getMyGrinds = () => async dispatch => {
-  const response = await fetch(`/api/grinds/my-grinds`);
+export const getAllGrinds = (location) => async dispatch => {
+  const response = await fetch(`/api/grinds/${location}`);
 
   if (response.ok) {
     const grinds = await response.json();
@@ -128,10 +119,13 @@ export default function grindReducer(state = initialState, action) {
   let newState = {}
   switch (action.type) {
     case LOAD_ALL_GRINDS:
-      Object.values(action.grinds['all_grind_sessions']).forEach(grind => {
-        newState[grind.id] = grind;
-      });
-      return newState
+      if (!Object.values(action.grinds).length) return newState;
+      else {
+        Object.values(action.grinds['all_grind_sessions']).forEach(grind => {
+          newState[grind.id] = grind;
+        });
+        return newState
+      }
     case LOAD_SINGLE_GRIND:
       newState = Object.assign({}, state);
       newState[action.grind.id] = action.grind;

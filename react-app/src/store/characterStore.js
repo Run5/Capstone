@@ -31,19 +31,9 @@ export const getAllCharacters = () => async dispatch => {
 
   if (response.ok) {
     const characters = await response.json();
-    console.log('>>>>>>>>>>>>', characters)
     dispatch(loadAllCharacters(characters));
   };
 };
-
-// export const getMyCharacters = () => async dispatch => {
-//   const response = await fetch(`/api/characters/my-characters`);
-
-//   if (response.ok) {
-//     const characters = await response.json();
-//     dispatch(loadAllCharacters(characters));
-//   };
-// };
 
 export const deleteCharacter = (id) => async (dispatch) => {
   const response = await fetch(`/api/characters/${id}`, {
@@ -104,6 +94,10 @@ export const postCharacter = (payload) => async dispatch => {
       dp,
     }),
   });
+
+  if (response.status === 401) {
+    alert('That name is unavailible')
+  }
 
   if (response.ok) {
     const character = await response.json();

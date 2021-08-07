@@ -11,8 +11,6 @@ import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  // const firstNav = document.querySelector('#first-nav');
-  // const secondNav = document.querySelector('#second-nav');
 
   const extendNavbar = () => {
     const firstNav = document.querySelector('#first-nav');
@@ -34,7 +32,7 @@ const NavBar = () => {
           <NavLink to='/' exact={true} activeClassName='active' className='navlink-comp nav-container-element main-home'>
             Modest
           </NavLink>
-          <NavLink to='/grind-sessions' exact={true} activeClassName='active' className='navlink-comp nav-container-element nav-container-element-top'>
+          <NavLink to='/grind-sessions/all' exact={true} activeClassName='active' className='navlink-comp nav-container-element nav-container-element-top'>
             Grind Sessions
           </NavLink>
           <NavLink to='/about' exact={true} activeClassName='active' className='navlink-comp nav-container-element nav-container-element-top'>
@@ -56,9 +54,6 @@ const NavBar = () => {
               <LoginFormModal />
               &nbsp;|&nbsp;
               <SignUpFormModal />
-              {/* <NavLink to='/users' exact={true} activeClassName='active'>
-                Users
-              </NavLink> */}
             </div>
           )}
         </div>
@@ -68,25 +63,11 @@ const NavBar = () => {
           <span className='nav-container-element'>
           </span>
           <ul className='nav-container-element nav-list'>
-            <li>Orc Camp</li>
-            <li>Castle Ruins</li>
-            <li>Bloody Monastery</li>
-            <li>Star's End</li>
-            <li>Hystria Ruins</li>
-            {/* <li>Swamp Fogan Habitat</li>
-            <li>Swamp Naga Habitat</li>
-            <li>Crypt of Resting Thoughts</li>
-            <li>Biraghi Den</li>
-            <li>Ash Forest</li>
-            <li>Sycraia Abyssal Ruins</li>
-            <li>Aakman Temple</li>
-            <li>Thornwood Forest</li>
-            <li>Kratuga Ancient Ruins</li>
-            <li>Altar Imp Habitat</li>
-            <li>Tunkuta</li>
-            <li>Olun's Valley</li>
-            <li>Padix Island</li>
-            <li>Abandoned Monastery</li> */}
+            <li><NavLink to='/grind-sessions/OrcCamp' exact={true} activeClassName='active'>Orc Camp</NavLink></li>
+            <li><NavLink to='/grind-sessions/CastleRuins' exact={true} activeClassName='active'>Castle Ruins</NavLink></li>
+            <li><NavLink to='/grind-sessions/BloodyMonastery' exact={true} activeClassName='active'>Bloody Monastery</NavLink></li>
+            <li><NavLink to='/grind-sessions/StarsEnd' exact={true} activeClassName='active'>Star's End</NavLink></li>
+            <li><NavLink to='/grind-sessions/HystriaRuins' exact={true} activeClassName='active'>Hystria Ruins</NavLink></li>
           </ul>
           <span className='nav-container-element'>
           </span>

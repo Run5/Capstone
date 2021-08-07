@@ -47,7 +47,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute> */}
-        <Route path='/grind-sessions' exact={true}>
+        <Route path='/grind-sessions/:location' exact={true} forceRefresh>
           <DisplayGrind />
         </Route>
         <ProtectedRoute path='/profile' exact={true} >
