@@ -35,15 +35,6 @@ export const getAllGrinds = (location) => async dispatch => {
   };
 };
 
-// export const getMyGrinds = () => async dispatch => {
-//   const response = await fetch(`/api/grinds/my-grinds`);
-
-//   if (response.ok) {
-//     const grinds = await response.json();
-//     dispatch(loadAllGrinds(grinds));
-//   };
-// };
-
 export const deleteGrind = (id) => async (dispatch) => {
   const response = await fetch(`/api/grinds/${id}`, {
     method: 'DELETE',

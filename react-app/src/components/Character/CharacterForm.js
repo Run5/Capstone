@@ -5,7 +5,7 @@ import { editCharacter, postCharacter } from '../../store/characterStore';
 export default function GrindForm({ setShowModal, charId }) {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
-  const [charClass, setCharClass] = useState('');
+  const [charClass, setCharClass] = useState('Warrior');
   const [AP, setAP] = useState('');
   const [DP, setDP] = useState('');
   const characters = useSelector(state => state.character);
