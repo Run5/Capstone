@@ -31,7 +31,6 @@ export const getAllCharacters = () => async dispatch => {
 
   if (response.ok) {
     const characters = await response.json();
-    console.log('>>>>>>>>>>>>', characters)
     dispatch(loadAllCharacters(characters));
   };
 };
