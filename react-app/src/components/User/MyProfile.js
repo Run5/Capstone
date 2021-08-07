@@ -14,7 +14,7 @@ export default function MyProfile() {
         sdfgsdfgs dfgsd fgdf gaewsz xrd ctfv yg buhn ijmokd ercf tvygb hunj imko,rde cftvg ybhunj imk
         fsdf ug sybd fhinj omk,lpef sef sef sef
       </p>
-      <NavLink to='/create-character' exact={true} activeClassName='active'>Create Character</NavLink>
+      <NavLink to='/characters' exact={true} activeClassName='active'>View Characters</NavLink>
     </>
   )
 }

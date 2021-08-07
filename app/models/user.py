@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
 
     grind_sessions = db.relationship(
         "GrindSessions", back_populates='owner', passive_deletes=True)
+    characters = db.relationship(
+        "Characters", back_populates='owner', passive_deletes=True)
 
     @property
     def password(self):

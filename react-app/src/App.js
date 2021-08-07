@@ -8,11 +8,12 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 // import UsersList from './components/User/UsersList';
 // import User from './components/User/User';
 import MyProfile from './components/User/MyProfile';
-import CreateCharacter from './components/Character/CreateCharacter';
 import Splash from './components/Home/Splash';
 import Home from './components/Home/Home';
 import { authenticate } from './store/session';
 import DisplayGrind from './components/GrindSession/DisplayGrind';
+import CharacterPage from './components/Character/CharacterPage';
+import NotFoundPage from './components/NotFoundPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,8 +53,8 @@ function App() {
         <ProtectedRoute path='/profile' exact={true} >
           <MyProfile />
         </ProtectedRoute>
-        <ProtectedRoute path='/create-character' exact={true} >
-          <CreateCharacter />
+        <ProtectedRoute path='/characters' exact={true} >
+          <CharacterPage />
         </ProtectedRoute>
         {user ? (
           <ProtectedRoute path='/' exact={true} >
@@ -64,6 +65,9 @@ function App() {
             <Splash />
           </Route>
         )}
+        <Route>
+          <NotFoundPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

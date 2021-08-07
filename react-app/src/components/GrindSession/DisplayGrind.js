@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllGrinds, editGrind, deleteGrind } from '../../store/grindStore';
+import { getAllGrinds, deleteGrind } from '../../store/grindStore';
 import GrindModal from './GrindModal';
 
 
@@ -53,31 +53,5 @@ export default function DisplayGrind() {
       </table>
       <GrindModal grindId={ null } />
     </>
-    // <>
-    //   {console.log('>>>>>>>>>>>>>>>>>>', grindSessions)}
-    //   <div className='test'>
-    //     {Object.values(grindSessions)?.map(grind => {
-    //       return (
-    //         <div className='testtwo'>
-    //           {console.log('SPAN: ', grind.location)}
-    //           <span>{grind.location}</span>
-    //           {console.log('SPAN: ', grind.char_class)}
-    //           <span>{grind.char_class}</span>
-    //           {console.log('SPAN: ', grind.ap, grind.dp)}
-    //           <span>{grind.ap} / {grind.dp}</span>
-    //           {console.log('SPAN: ', grind.time)}
-    //           <span>{grind.time}</span>
-    //           {console.log('SPAN: ', grind.silver)}
-    //           <span>{grind.silver}</span>
-    //           {console.log('SPAN: ', grind.trash)}
-    //           <span>{grind.trash}</span>
-    //         </div>
-    //       )
-    //     })}
-    //     </div>
-    //   <h1>Grind Sessions</h1>
-    //   <span>hello</span>
-    //   <GrindModal />
-    // </>
   );
 };
