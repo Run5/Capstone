@@ -7,7 +7,7 @@ class GrindSessions(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(
-        "users.id", ondelete="CASCADE"), nullable=False)
+        "users.id", ondelete="CASCADE"), nullable=True)
     location = db.Column(db.String, nullable=False)
     char_class = db.Column(db.String, nullable=False)
     ap = db.Column(db.Integer, nullable=False, default=0)

@@ -13,6 +13,9 @@ export default function GrindForm({ setShowModal, grindId }) {
   const [silver, setSilver] = useState('');
   const [trash, setTrash] = useState('');
   const grindSessions = useSelector(state => state.grind);
+  const characters = useSelector(state => state.character);
+  const charArr = Object.values(characters);
+  const [charValue, setCharacter] = useState(charArr[0]?.id);
   const dispatch = useDispatch();
   let grind = null;
 
@@ -107,7 +110,17 @@ export default function GrindForm({ setShowModal, grindId }) {
     setTrash(e.target.value);
   };
 
+  const updateCharacter = async (e) => {
+    await setCharacter(e.target.value)
+    await setCharClass(characters[charValue].char_class);
+    await setAP(characters[charValue].ap);
+    await setDP(characters[charValue].dp);
+  };
+
   useEffect(() => {
+    setCharClass((charArr[0]?.char_class || 'Warrior'));
+    setAP(charArr[0]?.ap);
+    setDP(charArr[0]?.dp);
     if (grindId) {
       grind = grindSessions[`${grindId}`];
       updateAll();
@@ -151,57 +164,76 @@ export default function GrindForm({ setShowModal, grindId }) {
             <option value="Abandoned Monastery">Abandoned Monastery</option>
           </select>
         </div>
-        <div>
-          <label>Class</label>
-          <select
-            type='select'
-            name='class'
-            onChange={updateCharClass}
-            value={charClass}
-          >
-            <option value="Warrior">Warrior</option>
-            <option value="Ranger">Ranger</option>
-            <option value="Sorceress">Sorceress</option>
-            <option value="Berserker">Berserker</option>
-            <option value="Tamer">Tamer</option>
-            <option value="Musa">Musa</option>
-            <option value="Maehwa">Maehwa</option>
-            <option value="Valkyrie">Valkyrie</option>
-            <option value="Kunoichi">Kunoichi</option>
-            <option value="Ninja">Ninja</option>
-            <option value="Wizard">Wizard</option>
-            <option value="Witch">Witch</option>
-            <option value="Dark Knight">Dark Knight</option>
-            <option value="Striker">Striker</option>
-            <option value="Mystic">Mystic</option>
-            <option value="Archer">Archer</option>
-            <option value="Lahn">Lahn</option>
-            <option value="Shai">Shai</option>
-            <option value="Guardian">Guardian</option>
-            <option value="Hashashin">Hashashin</option>
-            <option value="Nova">Nova</option>
-            <option value="Sage">Sage</option>
-            <option value="Corsair">Corsair</option>
-          </select>
-        </div>
-        <div>
-          <label>AP</label>
-          <input
-            type='number'
-            name='AP'
-            onChange={updateAP}
-            value={AP}
-          ></input>
-        </div>
-        <div>
-          <label>DP</label>
-          <input
-            type='number'
-            name='DP'
-            onChange={updateDP}
-            value={DP}
-          ></input>
-        </div>
+        {(Object.values(characters).length && !grindId) ? (
+          <>
+            <select
+              type='select'
+              name='character'
+              onChange={updateCharacter}
+              value={charValue}
+            >
+            {Object.values(characters).map((character) => {
+              return (
+                <option value={`${character.id}`}>{character.name}</option>
+              )
+            })}
+            </select>
+          </>
+          ) : (
+          <>
+            <div>
+              <label>Class</label>
+              <select
+                type='select'
+                name='class'
+                onChange={updateCharClass}
+                value={charClass}
+              >
+                <option value="Warrior">Warrior</option>
+                <option value="Ranger">Ranger</option>
+                <option value="Sorceress">Sorceress</option>
+                <option value="Berserker">Berserker</option>
+                <option value="Tamer">Tamer</option>
+                <option value="Musa">Musa</option>
+                <option value="Maehwa">Maehwa</option>
+                <option value="Valkyrie">Valkyrie</option>
+                <option value="Kunoichi">Kunoichi</option>
+                <option value="Ninja">Ninja</option>
+                <option value="Wizard">Wizard</option>
+                <option value="Witch">Witch</option>
+                <option value="Dark Knight">Dark Knight</option>
+                <option value="Striker">Striker</option>
+                <option value="Mystic">Mystic</option>
+                <option value="Archer">Archer</option>
+                <option value="Lahn">Lahn</option>
+                <option value="Shai">Shai</option>
+                <option value="Guardian">Guardian</option>
+                <option value="Hashashin">Hashashin</option>
+                <option value="Nova">Nova</option>
+                <option value="Sage">Sage</option>
+                <option value="Corsair">Corsair</option>
+              </select>
+            </div>
+            <div>
+              <label>AP</label>
+              <input
+                type='number'
+                name='AP'
+                onChange={updateAP}
+                value={AP}
+              ></input>
+            </div>
+            <div>
+              <label>DP</label>
+              <input
+                type='number'
+                name='DP'
+                onChange={updateDP}
+                value={DP}
+              ></input>
+            </div>
+          </>
+        )}
         <div>
           <label>Start Time</label>
           <input

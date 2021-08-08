@@ -5,5 +5,5 @@ import './User.css';
 export default function Profile() {
   let history = useHistory();
 
-  return <button onClick={() => history.push('/profile')}>Profile</button>;
+  return <button onClick={() => history.push('/characters')}>Profile</button>;
 }

@@ -24,8 +24,9 @@ export default function GrindForm({ setShowModal, charId }) {
     const data = await dispatch(postCharacter(payload));
     if (data) {
       setErrors(data)
-    }
-    setShowModal(false);
+    } else {
+      setShowModal(false);
+    };
   };
 
   const onEdit = async (e) => {
@@ -40,8 +41,9 @@ export default function GrindForm({ setShowModal, charId }) {
     const data = await dispatch(editCharacter(payload));
     if (data) {
       setErrors(data)
-    }
-    setShowModal(false);
+    } else {
+      setShowModal(false);
+    };
   };
 
   const updateAll = () => {

@@ -1,0 +1,52 @@
+.page-container {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.page-container > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100vw;
+  min-height: 100vh;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: -1;
+}
+
+.contact-container {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 600px;
+  height: 300px;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 70px;
+  font-weight: bold;
+  font-family: 'Ink Free';
+  color: white;
+}
+
+.contact-list > li{
+  list-style: none;
+  font-family: 'Ink Free';
+  color: white;
+}
+
+/* .contact-link {
+  cursor: pointer;
+} */
+
+.contact-link:hover {
+  cursor: pointer;
+  color: lightgray;
+}
