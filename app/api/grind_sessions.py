@@ -70,6 +70,7 @@ def grind_sessions_func(location):
 
 
 @grind_sessions_routes.route('', methods=['POST'])
+@login_required
 def grind_sessions_post():
     if request.method == 'POST':
         form = GrindForm()

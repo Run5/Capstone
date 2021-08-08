@@ -12,7 +12,7 @@ export default function GrindModal({ grindId }) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>{buttonMessage}</button>
+      <button className={(grindId) ? `edit-grind-button` : `add-grind-button`} onClick={() => setShowModal(true)}>{buttonMessage}</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <GrindForm setShowModal={ setShowModal } grindId={ grindId } />

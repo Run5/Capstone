@@ -1,6 +1,6 @@
-const LOAD_ALL_GRINDS = 'stocks/LOAD_ALL_GRINDS';
-const LOAD_SINGLE_GRIND = 'stocks/LOAD_SINGLE_GRIND';
-const DELETE_GRIND = 'stocks/DELETE_GRIND';
+const LOAD_ALL_GRINDS = 'grind/LOAD_ALL_GRINDS';
+const LOAD_SINGLE_GRIND = 'grind/LOAD_SINGLE_GRIND';
+const DELETE_GRIND = 'grind/DELETE_GRIND';
 
 const loadAllGrinds = grinds => ({
   type: LOAD_ALL_GRINDS,
@@ -77,7 +77,14 @@ export const editGrind = (payload) => async (dispatch) => {
   if (response.ok) {
     const grind = await response.json();
     dispatch(loadOneGrind(grind));
-  }
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    };
+  } else {
+    return ['An error occurred. Please try again.'];
+  };
 };
 
 export const postGrindSession = (payload) => async dispatch => {
@@ -110,6 +117,13 @@ export const postGrindSession = (payload) => async dispatch => {
   if (response.ok) {
     const grind = await response.json();
     dispatch(loadOneGrind(grind));
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    };
+  } else {
+    return ['An error occurred. Please try again.'];
   };
 };
 

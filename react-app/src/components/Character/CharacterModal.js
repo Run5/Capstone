@@ -4,7 +4,7 @@ import CharacterForm from './CharacterForm';
 
 export default function GrindModal({ charId }) {
   const [showModal, setShowModal] = useState(false);
-  const [buttonMessage, setButtonMessage] = useState('Add Character')
+  const [buttonMessage, setButtonMessage] = useState('New Character')
 
   useEffect(() => {
     if (charId) setButtonMessage('Edit');
@@ -12,7 +12,7 @@ export default function GrindModal({ charId }) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>{buttonMessage}</button>
+      <button className={(charId) ? `edit-button` : `add-button`} onClick={() => setShowModal(true)}>{buttonMessage}</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CharacterForm setShowModal={ setShowModal } charId={ charId } />

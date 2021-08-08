@@ -63,16 +63,16 @@ const NavBar = () => {
           <span className='nav-container-element'>
           </span>
           <ul className='nav-container-element nav-list'>
-            <li><NavLink to='/grind-sessions/OrcCamp' exact={true} activeClassName='active'>Orc Camp</NavLink></li>
-            <li><NavLink to='/grind-sessions/CastleRuins' exact={true} activeClassName='active'>Castle Ruins</NavLink></li>
-            <li><NavLink to='/grind-sessions/BloodyMonastery' exact={true} activeClassName='active'>Bloody Monastery</NavLink></li>
-            <li><NavLink to='/grind-sessions/StarsEnd' exact={true} activeClassName='active'>Star's End</NavLink></li>
-            <li><NavLink to='/grind-sessions/HystriaRuins' exact={true} activeClassName='active'>Hystria Ruins</NavLink></li>
+            <li><NavLink className='navlink' to='/grind-sessions/OrcCamp' exact={true} activeClassName='active'>Orc Camp</NavLink></li>
+            <li><NavLink className='navlink' to='/grind-sessions/CastleRuins' exact={true} activeClassName='active'>Castle Ruins</NavLink></li>
+            <li><NavLink className='navlink' to='/grind-sessions/BloodyMonastery' exact={true} activeClassName='active'>Bloody Monastery</NavLink></li>
+            <li><NavLink className='navlink' to='/grind-sessions/StarsEnd' exact={true} activeClassName='active'>Star's End</NavLink></li>
+            <li><NavLink className='navlink' to='/grind-sessions/HystriaRuins' exact={true} activeClassName='active'>Hystria Ruins</NavLink></li>
           </ul>
           <span className='nav-container-element'>
           </span>
           <ul className='nav-container-element nav-list'>
-            <li>Email</li>
+            <li><NavLink className='navlink' to='/contact' exact={true} activeClassName='active'>Email</NavLink></li>
             <li onClick={()=> window.open("https://github.com/Run5", "_blank")}>Github</li>
             <li onClick={()=> window.open("https://www.linkedin.com/in/chase-brashear-a05724163/", "_blank")}>Linkedin</li>
           </ul>

@@ -94,3 +94,11 @@
 .nav-list > li:hover{
   color: lightgray;
 }
+
+.navlink {
+  text-decoration: none;
+  color: black;
+}
+ .navlink:hover {
+  color: lightgray;
+ }

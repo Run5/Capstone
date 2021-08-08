@@ -5,9 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-// import UsersList from './components/User/UsersList';
-// import User from './components/User/User';
-import MyProfile from './components/User/MyProfile';
+import Contact from './components/MyContact';
 import Splash from './components/Home/Splash';
 import Home from './components/Home/Home';
 import { authenticate } from './store/session';
@@ -50,9 +48,9 @@ function App() {
         <Route path='/grind-sessions/:location' exact={true} forceRefresh>
           <DisplayGrind />
         </Route>
-        <ProtectedRoute path='/profile' exact={true} >
-          <MyProfile />
-        </ProtectedRoute>
+        <Route path='/contact' exact={true} >
+          <Contact />
+        </Route>
         <ProtectedRoute path='/characters' exact={true} >
           <CharacterPage />
         </ProtectedRoute>

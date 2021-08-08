@@ -1,6 +1,7 @@
-const LOAD_ALL_CHARACTERS = 'stocks/LOAD_ALL_CHARACTERS';
-const LOAD_SINGLE_CHARACTER = 'stocks/LOAD_SINGLE_CHARACTER';
-const DELETE_CHARACTER = 'stocks/DELETE_CHARACTER';
+const LOAD_ALL_CHARACTERS = 'character/LOAD_ALL_CHARACTERS';
+const LOAD_SINGLE_CHARACTER = 'character/LOAD_SINGLE_CHARACTER';
+const DELETE_CHARACTER = 'character/DELETE_CHARACTER';
+export const PURGE = 'character/PURGE';
 
 const loadAllCharacters = characters => ({
   type: LOAD_ALL_CHARACTERS,
@@ -71,7 +72,14 @@ export const editCharacter = (payload) => async (dispatch) => {
   if (response.ok) {
     const character = await response.json();
     dispatch(loadOneCharacter(character));
-  }
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    };
+  } else {
+    return ['An error occurred. Please try again.'];
+  };
 };
 
 export const postCharacter = (payload) => async dispatch => {
@@ -95,13 +103,16 @@ export const postCharacter = (payload) => async dispatch => {
     }),
   });
 
-  if (response.status === 401) {
-    alert('That name is unavailible')
-  }
-
   if (response.ok) {
     const character = await response.json();
     dispatch(loadOneCharacter(character));
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    };
+  } else {
+    return ['An error occurred. Please try again.'];
   };
 };
 
@@ -111,7 +122,7 @@ export default function characterReducer(state = initialState, action) {
   let newState = {}
   switch (action.type) {
     case LOAD_ALL_CHARACTERS:
-      if (!action.characters) return newState;
+      if (!Object.values(action.characters).length) return newState;
       else {
         Object.values(action.characters['all_characters']).forEach(character => {
           newState[character.id] = character;
@@ -125,6 +136,8 @@ export default function characterReducer(state = initialState, action) {
     case DELETE_CHARACTER:
       newState = {...state}
       delete newState[action.character.id]
+      return newState;
+    case PURGE:
       return newState;
     default:
       return state;
