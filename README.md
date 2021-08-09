@@ -1,135 +1,108 @@
-# Flask React Project
+# Modest Grind Sessions
+# [ModestGrinds](https://modest-grind.herokuapp.com/)
+This is an app for tracking grind information in the mmo black desert online.
 
-This is the starter for the Flask React project.
+  * [MVP List](https://github.com/Run5/Capstone/wiki/MVP-list)
+  * [Schema](https://github.com/Run5/Capstone/wiki/Schema)
+  * [User Stories](https://github.com/Run5/Capstone/wiki/User-Stories)
+### Database Schema
+![dbdiagram](https://user-images.githubusercontent.com/33680646/128742381-4ad64feb-4c7e-4de1-85b2-dc69947a4431.png)
 
-## Getting started
+### My Characters
+![myCharactersPage](https://user-images.githubusercontent.com/33680646/128742450-b00a0ece-3dff-4c0b-b2c2-31170e2d8b8b.jpg)
 
-1. Clone this repository (only this branch)
+### Grind Sessions
+![grindSessions](https://user-images.githubusercontent.com/33680646/128742466-819b90c8-09c0-4ef7-8d47-71c9ab0ae02d.jpg)
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+ ### Technologies Used
+ * JavaScript
+ * Flask
+ * Postgresql
+ * python
+ * Heroku
+ * Reactjs and Redux
+ * CSS
 
-2. Install dependencies
+ ### Key Features
+   * Users can create, edit, view and delete characters on their profile page.
+   * Users can create, edit, view and delete grind sessions for specific locations. If characters exist for the user the grind form can dynamically pull character info to populate the form.
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+ ### Brief Code Snippet
+  * The code below dynamically changes the grind form based on if characters exist for the user
+  ```javascript
+   {(Object.values(characters).length && !grindId) ? (
+      <div className='grindform-input character-input'>
+         <label>Character:</label>
+         <select
+            type='select'
+            name='character'
+            onChange={updateCharacter}
+            value={charValue}
+         >
+         {Object.values(characters).map((character) => {
+            return (
+            <option value={`${character.id}`}>{character.name}</option>
+            )
+         })}
+         </select>
+      </div>
+      ) : (
+      <>
+         <div className='grindform-input class-input'>
+            <label>Class:</label>
+            <select
+            type='select'
+            name='class'
+            onChange={updateCharClass}
+            value={charClass}
+            >
+            <option value="Warrior">Warrior</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Sorceress">Sorceress</option>
+            <option value="Berserker">Berserker</option>
+            <option value="Tamer">Tamer</option>
+            <option value="Musa">Musa</option>
+            <option value="Maehwa">Maehwa</option>
+            <option value="Valkyrie">Valkyrie</option>
+            <option value="Kunoichi">Kunoichi</option>
+            <option value="Ninja">Ninja</option>
+            <option value="Wizard">Wizard</option>
+            <option value="Witch">Witch</option>
+            <option value="Dark Knight">Dark Knight</option>
+            <option value="Striker">Striker</option>
+            <option value="Mystic">Mystic</option>
+            <option value="Archer">Archer</option>
+            <option value="Lahn">Lahn</option>
+            <option value="Shai">Shai</option>
+            <option value="Guardian">Guardian</option>
+            <option value="Hashashin">Hashashin</option>
+            <option value="Nova">Nova</option>
+            <option value="Sage">Sage</option>
+            <option value="Corsair">Corsair</option>
+            </select>
+         </div>
+         <div className='grindform-input'>
+            <input
+            type='number'
+            name='AP'
+            onChange={updateAP}
+            value={AP}
+            placeholder='AP'
+            ></input>
+         </div>
+         <div className='grindform-input'>
+            <input
+            type='number'
+            name='DP'
+            onChange={updateDP}
+            value={DP}
+            placeholder='DP'
+            ></input>
+         </div>
+      </>
+   )}
+  ```
+# Developer
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
-
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
-
-   ```bash
-   heroku login
-   ```
-
-6. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
-
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-# Capstone
+ **Chase Brashear**
+  * https://github.com/run5
