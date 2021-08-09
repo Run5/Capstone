@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 import DisplayGrind from './components/GrindSession/DisplayGrind';
 import CharacterPage from './components/Character/CharacterPage';
 import NotFoundPage from './components/NotFoundPage';
+import About from './components/About';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,17 +40,14 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute> */}
         <Route path='/grind-sessions/:location' exact={true} forceRefresh>
           <DisplayGrind />
         </Route>
         <Route path='/contact' exact={true} >
           <Contact />
+        </Route>
+        <Route path='/about' exact={true} >
+          <About />
         </Route>
         <ProtectedRoute path='/characters' exact={true} >
           <CharacterPage />
