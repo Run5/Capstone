@@ -130,151 +130,159 @@ export default function GrindForm({ setShowModal, grindId }) {
   return (
     <>
       <form onSubmit={(grindId) ? onEdit : onAdd}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div>
-          <label>Location</label>
-          <select
-            type='select'
-            name='location'
-            onChange={updateLocation}
-            value={location}
-          >
-            <option value="Orc Camp">Orc Camp</option>
-            <option value="Castle Ruins">Castle Ruins</option>
-            <option value="Bloody Monastery">Bloody Monastery</option>
-            <option value="Star's End">Star's End</option>
-            <option value="Hystria Ruins">Hystria Ruins</option>
-            <option value="Swamp Fogan Habitat">Swamp Fogan Habitat</option>
-            <option value="Swamp Naga Habitat">Swamp Naga Habitat</option>
-            <option value="Crypt of Resting Thoughts">Crypt of Resting Thoughts</option>
-            <option value="Biraghi Den">Biraghi Den</option>
-            <option value="Ash Forest">Ash Forest</option>
-            <option value="Sycraia Abyssal Ruins">Sycraia Abyssal Ruins</option>
-            <option value="Aakman Temple">Aakman Temple</option>
-            <option value="Thornwood Forest">Thornwood Forest</option>
-            <option value="Kratuga Ancient Ruins">Kratuga Ancient Ruins</option>
-            <option value="Altar Imp Habitat">Altar Imp Habitat</option>
-            <option value="Tunkuta">Tunkuta</option>
-            <option value="Olun's Valley">Olun's Valley</option>
-            <option value="Padix Island">Padix Island</option>
-            <option value="Abandoned Monastery">Abandoned Monastery</option>
-          </select>
-        </div>
-        {(Object.values(characters).length && !grindId) ? (
-          <>
+        <div className='grindform-container'>
+          <div className='grindform-title'>
+            Input the details of your grind session:
+          </div>
+          <div className='grindform-input'>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className='grindform-input location-input'>
+            <label>Location:</label>
             <select
               type='select'
-              name='character'
-              onChange={updateCharacter}
-              value={charValue}
+              name='location'
+              onChange={updateLocation}
+              value={location}
             >
-            {Object.values(characters).map((character) => {
-              return (
-                <option value={`${character.id}`}>{character.name}</option>
-              )
-            })}
+              <option value="Orc Camp">Orc Camp</option>
+              <option value="Castle Ruins">Castle Ruins</option>
+              <option value="Bloody Monastery">Bloody Monastery</option>
+              <option value="Star's End">Star's End</option>
+              <option value="Hystria Ruins">Hystria Ruins</option>
+              <option value="Swamp Fogan Habitat">Swamp Fogan Habitat</option>
+              <option value="Swamp Naga Habitat">Swamp Naga Habitat</option>
+              <option value="Crypt of Resting Thoughts">Crypt of Resting Thoughts</option>
+              <option value="Biraghi Den">Biraghi Den</option>
+              <option value="Ash Forest">Ash Forest</option>
+              <option value="Sycraia Abyssal Ruins">Sycraia Abyssal Ruins</option>
+              <option value="Aakman Temple">Aakman Temple</option>
+              <option value="Thornwood Forest">Thornwood Forest</option>
+              <option value="Kratuga Ancient Ruins">Kratuga Ancient Ruins</option>
+              <option value="Altar Imp Habitat">Altar Imp Habitat</option>
+              <option value="Tunkuta">Tunkuta</option>
+              <option value="Olun's Valley">Olun's Valley</option>
+              <option value="Padix Island">Padix Island</option>
+              <option value="Abandoned Monastery">Abandoned Monastery</option>
             </select>
-          </>
-          ) : (
-          <>
-            <div>
-              <label>Class</label>
+          </div>
+          {(Object.values(characters).length && !grindId) ? (
+            <div className='grindform-input character-input'>
+              <label>Character:</label>
               <select
                 type='select'
-                name='class'
-                onChange={updateCharClass}
-                value={charClass}
+                name='character'
+                onChange={updateCharacter}
+                value={charValue}
               >
-                <option value="Warrior">Warrior</option>
-                <option value="Ranger">Ranger</option>
-                <option value="Sorceress">Sorceress</option>
-                <option value="Berserker">Berserker</option>
-                <option value="Tamer">Tamer</option>
-                <option value="Musa">Musa</option>
-                <option value="Maehwa">Maehwa</option>
-                <option value="Valkyrie">Valkyrie</option>
-                <option value="Kunoichi">Kunoichi</option>
-                <option value="Ninja">Ninja</option>
-                <option value="Wizard">Wizard</option>
-                <option value="Witch">Witch</option>
-                <option value="Dark Knight">Dark Knight</option>
-                <option value="Striker">Striker</option>
-                <option value="Mystic">Mystic</option>
-                <option value="Archer">Archer</option>
-                <option value="Lahn">Lahn</option>
-                <option value="Shai">Shai</option>
-                <option value="Guardian">Guardian</option>
-                <option value="Hashashin">Hashashin</option>
-                <option value="Nova">Nova</option>
-                <option value="Sage">Sage</option>
-                <option value="Corsair">Corsair</option>
+              {Object.values(characters).map((character) => {
+                return (
+                  <option value={`${character.id}`}>{character.name}</option>
+                )
+              })}
               </select>
             </div>
-            <div>
-              <label>AP</label>
-              <input
-                type='number'
-                name='AP'
-                onChange={updateAP}
-                value={AP}
-              ></input>
-            </div>
-            <div>
-              <label>DP</label>
-              <input
-                type='number'
-                name='DP'
-                onChange={updateDP}
-                value={DP}
-              ></input>
-            </div>
-          </>
-        )}
-        <div>
-          <label>Start Time</label>
-          <input
-            type='time'
-            name='startTime'
-            onChange={updateStartTime}
-            value={startTime}
-            required={true}
-          ></input>
+            ) : (
+            <>
+              <div className='grindform-input class-input'>
+                <label>Class:</label>
+                <select
+                  type='select'
+                  name='class'
+                  onChange={updateCharClass}
+                  value={charClass}
+                >
+                  <option value="Warrior">Warrior</option>
+                  <option value="Ranger">Ranger</option>
+                  <option value="Sorceress">Sorceress</option>
+                  <option value="Berserker">Berserker</option>
+                  <option value="Tamer">Tamer</option>
+                  <option value="Musa">Musa</option>
+                  <option value="Maehwa">Maehwa</option>
+                  <option value="Valkyrie">Valkyrie</option>
+                  <option value="Kunoichi">Kunoichi</option>
+                  <option value="Ninja">Ninja</option>
+                  <option value="Wizard">Wizard</option>
+                  <option value="Witch">Witch</option>
+                  <option value="Dark Knight">Dark Knight</option>
+                  <option value="Striker">Striker</option>
+                  <option value="Mystic">Mystic</option>
+                  <option value="Archer">Archer</option>
+                  <option value="Lahn">Lahn</option>
+                  <option value="Shai">Shai</option>
+                  <option value="Guardian">Guardian</option>
+                  <option value="Hashashin">Hashashin</option>
+                  <option value="Nova">Nova</option>
+                  <option value="Sage">Sage</option>
+                  <option value="Corsair">Corsair</option>
+                </select>
+              </div>
+              <div className='grindform-input'>
+                <input
+                  type='number'
+                  name='AP'
+                  onChange={updateAP}
+                  value={AP}
+                  placeholder='AP'
+                ></input>
+              </div>
+              <div className='grindform-input'>
+                <input
+                  type='number'
+                  name='DP'
+                  onChange={updateDP}
+                  value={DP}
+                  placeholder='DP'
+                ></input>
+              </div>
+            </>
+          )}
+          <div className='grindform-input time-input'>
+            <label>Start Time:</label>
+            <input
+              type='time'
+              name='startTime'
+              onChange={updateStartTime}
+              value={startTime}
+              required={true}
+            ></input>
+          </div>
+          <div className='grindform-input time-input'>
+            <label>End Time:</label>
+            <input
+              type='time'
+              name='endTime'
+              onChange={updateEndTime}
+              value={endTime}
+              required={true}
+            ></input>
+          </div>
+          <div className='grindform-input'>
+            <input
+              type='number'
+              name='silver'
+              onChange={updateSilver}
+              value={silver}
+              required={true}
+              placeholder='Silver Earned'
+            ></input>
+          </div>
+          <div className='grindform-input'>
+            <input
+              type='number'
+              name='trash'
+              onChange={updateTrash}
+              value={trash}
+              required={true}
+              placeholder='Trashloot Collected'
+            ></input>
+          </div>
+          <div>
+            <button className='grindform-button' type='submit'>Add my grind</button>
+          </div>
         </div>
-        <div>
-          <label>End Time</label>
-          <input
-            type='time'
-            name='endTime'
-            onChange={updateEndTime}
-            value={endTime}
-            required={true}
-          ></input>
-        </div>
-        <div>
-          <label>Silver</label>
-          <input
-            type='number'
-            name='silver'
-            onChange={updateSilver}
-            value={silver}
-            required={true}
-          ></input>
-        </div>
-        <div>
-          <label>Trash</label>
-          <input
-            type='number'
-            name='trash'
-            onChange={updateTrash}
-            value={trash}
-            required={true}
-          ></input>
-        </div>
-        <button type='submit'>Add my grind</button>
       </form>
     </>
   );

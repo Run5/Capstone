@@ -78,3 +78,38 @@
   width: 45%;
   text-decoration: none;
 }
+
+.charform-container {
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  width: 285px;
+}
+
+.charform-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.charform-input {
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.class-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.charform-button {
+  text-decoration: none;
+  background-color: #f4511e;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+}

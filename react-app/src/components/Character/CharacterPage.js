@@ -39,33 +39,6 @@ export default function CharacterPage() {
             </div>
           )})}
           {(charArr.length < 3) ? <CharacterModal grindId={ null } /> : null}
-        {/* <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Class</th>
-            <th>AP/DP</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.values(characters).map(character => {
-            return (
-            <tr>
-              <td>{character.name}</td>
-              <td>{character.char_class}</td>
-              <td>{character.ap} / {character.dp}</td>
-              {(user) ? (
-                (user.id === character.user_id) ? (
-                  <div>
-                    <CharacterModal charId={ character.id } />
-                    <button onClick={() => dispatch(deleteCharacter(character.id))}>Delete</button>
-                  </div>
-                ) : null ) : null }
-            </tr>
-            )
-          })}
-        </tbody>
-      </table> */}
       </div>
     </div>
   )
