@@ -79,79 +79,90 @@ export default function GrindForm({ setShowModal, charId }) {
   return (
     <>
       <form onSubmit={(charId) ? onEdit : onAdd}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+        <div className='charform-container'>
+          {(charId) ?
+            <div className='charform-title'>
+              Update your character.
+            </div>
+          :
+            <div className='charform-title'>
+              Create your character.
+            </div>
+          }
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          {(charId) ? <label>{name}</label> : (
+          <div className='charform-input'>
+            <input
+              type='text'
+              name='name'
+              onChange={updateName}
+              value={name}
+              required={true}
+              placeholder='Character Name'
+            ></input>
+          </div>
+          )}
+          <div className='charform-input class-input'>
+            <label>Select your Class:</label>
+            <select
+              type='select'
+              name='class'
+              onChange={updateCharClass}
+              value={charClass}
+            >
+              <option value="Warrior">Warrior</option>
+              <option value="Ranger">Ranger</option>
+              <option value="Sorceress">Sorceress</option>
+              <option value="Berserker">Berserker</option>
+              <option value="Tamer">Tamer</option>
+              <option value="Musa">Musa</option>
+              <option value="Maehwa">Maehwa</option>
+              <option value="Valkyrie">Valkyrie</option>
+              <option value="Kunoichi">Kunoichi</option>
+              <option value="Ninja">Ninja</option>
+              <option value="Wizard">Wizard</option>
+              <option value="Witch">Witch</option>
+              <option value="Dark Knight">Dark Knight</option>
+              <option value="Striker">Striker</option>
+              <option value="Mystic">Mystic</option>
+              <option value="Archer">Archer</option>
+              <option value="Lahn">Lahn</option>
+              <option value="Shai">Shai</option>
+              <option value="Guardian">Guardian</option>
+              <option value="Hashashin">Hashashin</option>
+              <option value="Nova">Nova</option>
+              <option value="Sage">Sage</option>
+              <option value="Corsair">Corsair</option>
+            </select>
+          </div>
+          <div className='charform-input'>
+            <input
+              type='number'
+              name='AP'
+              onChange={updateAP}
+              value={AP}
+              placeholder='AP'
+            ></input>
+          </div>
+          <div className='charform-input'>
+            <input
+              type='number'
+              name='DP'
+              onChange={updateDP}
+              value={DP}
+              placeholder='DP'
+            ></input>
+          </div>
+          {(charId) ?
+            <button className='charform-button' type='submit'>Update Character</button>
+          :
+            <button className='charform-button' type='submit'>Add Character</button>
+          }
         </div>
-        {(charId) ? <label>{name}</label> : (
-        <div>
-          <label>Name</label>
-          <input
-            type='text'
-            name='name'
-            onChange={updateName}
-            value={name}
-            required={true}
-          ></input>
-        </div>
-        )}
-        <div>
-          <label>Class</label>
-          <select
-            type='select'
-            name='class'
-            onChange={updateCharClass}
-            value={charClass}
-          >
-            <option value="Warrior">Warrior</option>
-            <option value="Ranger">Ranger</option>
-            <option value="Sorceress">Sorceress</option>
-            <option value="Berserker">Berserker</option>
-            <option value="Tamer">Tamer</option>
-            <option value="Musa">Musa</option>
-            <option value="Maehwa">Maehwa</option>
-            <option value="Valkyrie">Valkyrie</option>
-            <option value="Kunoichi">Kunoichi</option>
-            <option value="Ninja">Ninja</option>
-            <option value="Wizard">Wizard</option>
-            <option value="Witch">Witch</option>
-            <option value="Dark Knight">Dark Knight</option>
-            <option value="Striker">Striker</option>
-            <option value="Mystic">Mystic</option>
-            <option value="Archer">Archer</option>
-            <option value="Lahn">Lahn</option>
-            <option value="Shai">Shai</option>
-            <option value="Guardian">Guardian</option>
-            <option value="Hashashin">Hashashin</option>
-            <option value="Nova">Nova</option>
-            <option value="Sage">Sage</option>
-            <option value="Corsair">Corsair</option>
-          </select>
-        </div>
-        <div>
-          <label>AP</label>
-          <input
-            type='number'
-            name='AP'
-            onChange={updateAP}
-            value={AP}
-          ></input>
-        </div>
-        <div>
-          <label>DP</label>
-          <input
-            type='number'
-            name='DP'
-            onChange={updateDP}
-            value={DP}
-          ></input>
-        </div>
-        {(charId) ?
-          <button type='submit'>Update Character</button>
-        :
-          <button type='submit'>Add Character</button>
-        }
       </form>
     </>
   );
