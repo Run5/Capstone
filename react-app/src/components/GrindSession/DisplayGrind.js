@@ -61,21 +61,21 @@ export default function DisplayGrind() {
             <tbody>
               {Object.values(grindSessions).map(grind => {
                 return (
-                <tr>
-                  <td>{grind.location}</td>
-                  <td>{grind.char_class}</td>
-                  <td>{grind.ap} / {grind.dp}</td>
-                  <td>{grind.time}</td>
-                  <td>{grind.silver}</td>
-                  <td>{grind.trash}</td>
-                  {(user) ? (
-                    (user.id === grind.user_id) ? (
-                      <td>
-                        <GrindModal grindId={ grind.id } />
-                        <button className='delete-grind-button' onClick={() => dispatch(deleteGrind(grind.id))}>Delete</button>
-                      </td>
-                    ) : null ) : null }
-                </tr>
+                  <tr>
+                    <td>{grind.location}</td>
+                    <td>{grind.char_class}</td>
+                    <td>{grind.ap} / {grind.dp}</td>
+                    <td>{grind.time}</td>
+                    <td>{grind.silver}</td>
+                    <td>{grind.trash}</td>
+                    {(user) ? (
+                      (user.id === grind.user_id) ? (
+                        <td>
+                          <GrindModal grindId={ grind.id } />
+                          <button className='delete-grind-button' onClick={() => dispatch(deleteGrind(grind.id))}>Delete</button>
+                        </td>
+                      ) : null ) : null }
+                  </tr>
                 )
               })}
             </tbody>
