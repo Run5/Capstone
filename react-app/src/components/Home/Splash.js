@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import LoginFormModal from '../auth/LoginFormModal';
 import './Home.css';
 
 export default function Splash() {
@@ -12,7 +13,10 @@ export default function Splash() {
       </video>
       <div className='homepage-container'>
         <h1 className='home-page-title'>Modest Grind Sessions</h1>
-        <NavLink to='/grind-sessions/all' exact={true} activeClassName='active' className='large-button'><span>Register Grind Session </span></NavLink>
+        <div className='button-container'>
+          <button to='/characters' exact={true} activeClassName='active' className='large-button'><span><LoginFormModal text={"Create Character"}/></span></button>
+          <NavLink to='/grind-sessions/all' exact={true} activeClassName='active' className='large-button'><span>Register Grind Session </span></NavLink>
+        </div>
       </div>
     </div>
   )

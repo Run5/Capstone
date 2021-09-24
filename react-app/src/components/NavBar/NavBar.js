@@ -51,7 +51,7 @@ const NavBar = () => {
             <div className='nav-container-element'>
               <Demo />
               &nbsp;|&nbsp;
-              <LoginFormModal />
+              <LoginFormModal text={"Log In"} />
               &nbsp;|&nbsp;
               <SignUpFormModal />
             </div>
